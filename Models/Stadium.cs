@@ -9,6 +9,7 @@ namespace FootballManager.Models
     {
         public int StadiumId { get; set; }
         public string StadiumName { get; set; }
-        public string StadiumCity { get; set; }
+        
+        public int StadiumCapacity { get; set; }
     }
 }

@@ -1,0 +1,55 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="FootballManagerTests" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="FootballManager.Controllers.Tests" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="FootballManagerControllerTests" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="FootballManager.Controllers.Tests.FootballManagerControllerTests.GetTest" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="GetTest" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="FootballManager.Controllers.Tests.FootballManagerControllerTests.GetTest1" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="GetTest1" />
+                      </Rule>
+                    </Rule>
+<Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="FootballManager.Controllers.Tests.FootballManagerControllerTests.TestMovePlayer" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="TestMovePlayer" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="FootballManager.Controllers.Tests.FootballManagerControllerTests.TestAddTeam" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="TestAddTeam" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="FootballManager.Controllers.Tests.FootballManagerControllerTests.TestInsertPlayer" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="TestInsertPlayer" />
+                      </Rule>
+                    </Rule>
+                    
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>
