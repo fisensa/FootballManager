@@ -6,6 +6,7 @@ using FootballManager.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace FootballManager.Controllers
 {
     [Route("api/[controller]")]
