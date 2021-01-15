@@ -26,7 +26,7 @@ namespace FootballManagerTests
             [DataRow(1, false)]
             [DataRow(4, true)]
             [DataRow(2, false)]
-            public void GetTest1(int id, bool isEmpty)
+            public void GetTestWithParams(int id, bool isEmpty)
             {
 
                 var controller = new FootballManagerController();
