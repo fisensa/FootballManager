@@ -81,7 +81,7 @@ namespace FootballManager.Models
         /*
          * Inserts new player. Returns true if insert is sucessful.
          */
-        public static bool InsertPlayer(int teamId, string playerName, string playerSurname, int playerNumber, PlayerPosition playerPosition, string playerBirthRate)
+        public static bool CreatePlayer(int teamId, string playerName, string playerSurname, int playerNumber, PlayerPosition playerPosition, string playerBirthRate)
         {
 
             bool result = false;
@@ -119,7 +119,7 @@ namespace FootballManager.Models
         /*
          * Adds new team, returns team details or null if unable to add
          */
-        public static Team AddTeam(string teamLocation, string teamName, int stadiumId)
+        public static Team CreateTeam(string teamLocation, string teamName, int stadiumId)
         {
             Team result = null;
             if (Stadiums.Exists(x=>x.StadiumId==stadiumId))
@@ -140,7 +140,7 @@ namespace FootballManager.Models
         /*
          * Adds new stadium and its data, including its id
          */
-        public static Stadium AddStadium(string stadiumName, int stadiumCapacity)
+        public static Stadium CreateStadium(string stadiumName, int stadiumCapacity)
         {
             Stadium result;
             int maxStadiumId = Teams.Max(x => x.TeamId);
