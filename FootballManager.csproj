@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -7,12 +7,21 @@
   <ItemGroup>
     <Compile Remove="Database\**" />
     <Compile Remove="FootballManagerTests\**" />
+    <Compile Remove="TestClient\**" />
     <Content Remove="Database\**" />
     <Content Remove="FootballManagerTests\**" />
+    <Content Remove="TestClient\**" />
     <EmbeddedResource Remove="Database\**" />
     <EmbeddedResource Remove="FootballManagerTests\**" />
+    <EmbeddedResource Remove="TestClient\**" />
     <None Remove="Database\**" />
     <None Remove="FootballManagerTests\**" />
+    <None Remove="TestClient\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Json.Net" Version="1.0.23" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
 

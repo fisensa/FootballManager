@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FootballManager.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Runtime.Serialization.Json;
 
 namespace FootballManager.Controllers
 {
@@ -17,16 +17,33 @@ namespace FootballManager.Controllers
          * Get all players
          */
         [HttpGet]
-        public IEnumerable<PlayerTeam> Get() => FootballManagerModel.GetPlayers();
+        public List<PlayerTeam> Get()
+        {
+
+            var s = FootballManagerModel.GetPlayers();
+            return s;
+        }
+
+        /*
+       * Get all teams
+       */
+        [Route("[action]")]
+        public List<Team> GetTeams()
+        {
+
+            var s = FootballManagerModel.GetTeams();
+            return s;
+        }
 
         /*
         * Get players in specific team
         */
         [HttpGet("{id}")]
-        public IEnumerable<PlayerTeam> Get(int id) => FootballManagerModel.GetPlayersInTeam(id);
+        public List<PlayerTeam> Get(int id) => FootballManagerModel.GetPlayersInTeam(id);
         /*
         * Create player
         */
+        [Route("[action]")]
         [HttpPost]
         public bool CreatePlayer([FromBody] Player value)
         {
@@ -46,11 +63,12 @@ namespace FootballManager.Controllers
         [HttpPost]
         public bool MovePlayerToTeam(long playerId, int teamId) => FootballManagerModel.MovePlayerToTeam(playerId, teamId);
 
+        [Route("[action]")]
         [HttpPost]
         public Team CreateTeam([FromBody] Team team)
         {
             string teamLocation = team.TeamLocation;
-            string teamName = team.TeamLocation;
+            string teamName = team.TeamName;
             int stadiumId = team.FKStadiumId;
             return FootballManagerModel.CreateTeam(teamLocation, teamName, stadiumId);
         }

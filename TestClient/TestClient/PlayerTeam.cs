@@ -16,5 +16,9 @@ namespace FootballManager.Models
         public int PlayerNumber { get => playerNumber; set => playerNumber = value; }
         public string PlayerPosition { get; set; }
         public string PlayerTeamName { get; set; }
+        public override string ToString()
+        {
+            return PlayerName;
+        }
     }
 }

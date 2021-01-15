@@ -35,15 +35,9 @@ namespace FootballManager.Models
             Players.Add(new Player { PlayerId = 3, PlayerName = "Ruben", PlayerSurname = "Dias", PlayerNumber = 3, PlayerPosition = PlayerPosition.CENTRE_BACK, FKTeamId = 2, PlayerBirthDate = "1997/05/14" });
 
         }
-
-        internal static List<Team> GetTeams()
-        {
-            return Teams;
-        }
-
         /*
-* Returns list of all players
-*/
+         * Returns list of all players
+         */
         public static List<PlayerTeam> GetPlayers()
         {
             var pls = (from pl in Players
@@ -77,7 +71,7 @@ namespace FootballManager.Models
                            PlayerSurname = pl.PlayerSurname,
                            PlayerDateOfBirth = pl.PlayerBirthDate,
                            PlayerNumber = pl.PlayerNumber,
-                           PlayerPosition = pl.PlayerPosition.ToString().Replace('_', ' '),
+                           PlayerPosition = pl.PlayerPosition.ToString().Replace('_',' '),
                            PlayerTeamName = tm.TeamName
 
                        }).ToList();
@@ -102,7 +96,8 @@ namespace FootballManager.Models
                     PlayerNumber = playerNumber,
                     PlayerPosition = playerPosition,
                     FKTeamId = teamId,
-                    PlayerBirthDate = playerBirthRate
+                    PlayerBirthDate =
+                    playerBirthRate
                 });
                 result = true;
             }
@@ -114,7 +109,7 @@ namespace FootballManager.Models
         public static bool MovePlayerToTeam(long playerId, int teamId)
         {
             bool result = false;
-            if (Players.Exists(x => x.PlayerId == playerId && Teams.Exists(x => x.TeamId == teamId)))
+            if (Players.Exists(x => x.PlayerId == playerId && Teams.Exists(t => t.TeamId == teamId)))
             {
                 Players.Find(x => x.PlayerId == playerId).FKTeamId = teamId;
                 result = true;
@@ -127,7 +122,7 @@ namespace FootballManager.Models
         public static Team CreateTeam(string teamLocation, string teamName, int stadiumId)
         {
             Team result = null;
-            if (Stadiums.Exists(x => x.StadiumId == stadiumId))
+            if (Stadiums.Exists(x=>x.StadiumId==stadiumId))
             {
                 int maxTeamId = Teams.Max(x => x.TeamId);
                 result = new Team
