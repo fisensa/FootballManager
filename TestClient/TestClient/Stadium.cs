@@ -9,7 +9,10 @@ namespace FootballManager.Models
     {
         public int StadiumId { get; set; }
         public string StadiumName { get; set; }
-        
         public int StadiumCapacity { get; set; }
+        public override string ToString()
+        {
+            return StadiumName;
+        }
     }
 }

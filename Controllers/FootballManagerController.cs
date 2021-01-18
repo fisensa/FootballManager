@@ -30,7 +30,6 @@ namespace FootballManager.Controllers
         [Route("[action]")]
         public List<Team> GetTeams()
         {
-
             var s = FootballManagerModel.GetTeams();
             return s;
         }
@@ -39,7 +38,18 @@ namespace FootballManager.Controllers
         * Get players in specific team
         */
         [HttpGet("{id}")]
-        public List<PlayerTeam> Get(int id) => FootballManagerModel.GetPlayersInTeam(id);
+        public List<PlayerTeam> Get(int id)
+        {
+            return FootballManagerModel.GetPlayersInTeam(id);
+        }
+
+        [Route("[action]")]
+        public List<Stadium> GetStadiums()
+        {
+            return FootballManagerModel.Stadiums;
+        }
+
+
         /*
         * Create player
         */
@@ -52,7 +62,7 @@ namespace FootballManager.Controllers
             string playerName = value.PlayerName;
             string playerSurname = value.PlayerSurname;
             int playerNumber = value.PlayerNumber;
-            PlayerPosition playerPosition = value.PlayerPosition;
+            PlayerPosition playerPosition = (PlayerPosition) value.PlayerPosition;
             string playerBirthRate = value.PlayerBirthDate;
             return FootballManagerModel.CreatePlayer(teamId, playerName, playerSurname, playerNumber, playerPosition, playerBirthRate);
 
@@ -60,8 +70,12 @@ namespace FootballManager.Controllers
         /*
         * Move player to the new team, returns team info, in case that needed for UI
         */
+        [Route("[action]/{playerId}/{teamId}")]
         [HttpPost]
-        public bool MovePlayerToTeam(long playerId, int teamId) => FootballManagerModel.MovePlayerToTeam(playerId, teamId);
+        public bool MovePlayerToTeam(long playerId, int teamId)
+        {
+            return FootballManagerModel.MovePlayerToTeam(playerId, teamId);
+        }
 
         [Route("[action]")]
         [HttpPost]
@@ -76,6 +90,7 @@ namespace FootballManager.Controllers
         /*
         * Create stadium, returns stadium info, in case needed for UI
         */
+        [Route("[action]")]
         [HttpPost]
         public Stadium CreateStadium([FromBody] Stadium stadium)
         {
@@ -84,6 +99,8 @@ namespace FootballManager.Controllers
 
             return FootballManagerModel.CreateStadium(stadiumName, capacity);
         }
+
+
 
     }
 }

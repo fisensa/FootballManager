@@ -24,7 +24,15 @@ namespace FootballManagerTests
                 Assert.IsNotNull(playerTeams);
             }
 
-            
+            [TestMethod()]
+            public void TestGetStadiums()
+            {
+                var controller = new FootballManagerController();
+                List<Stadium> stadiums = (List<Stadium>)controller.GetStadiums();
+
+                Assert.IsNotNull(stadiums);
+            }
+
             [DataTestMethod]
             [DataRow(0, true)]      //return empty list as there is not team with id 0
             [DataRow(1, false)]     //return list of players
@@ -35,7 +43,7 @@ namespace FootballManagerTests
 
                 var controller = new FootballManagerController();
                 List<PlayerTeam> playerTeams = (List<PlayerTeam>)controller.Get(teamId);
-               Assert.AreEqual((playerTeams.Count == 0), isEmpty);
+                Assert.AreEqual((playerTeams.Count == 0), isEmpty);
             }
 
             [DataTestMethod]
@@ -83,9 +91,9 @@ namespace FootballManagerTests
              * Should always pass, as there are no checks on the backend
              */
             [DataTestMethod]
-            [DataRow("FNB Stadium", 30000,  true)]
+            [DataRow("FNB Stadium", 30000, true)]
             [DataRow("Ellis Park", 20000, true)]
-            [DataRow("Maracana",  80000, true)]
+            [DataRow("Maracana", 80000, true)]
             public void TestCreateStadium(string stadiumName, int stadiumCapacity, bool isNull)
             {
                 var controller = new FootballManagerController();
