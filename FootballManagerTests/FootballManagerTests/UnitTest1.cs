@@ -36,8 +36,8 @@ namespace FootballManagerTests
             [DataTestMethod]
             [DataRow(0, true)]      //return empty list as there is not team with id 0
             [DataRow(1, false)]     //return list of players
-            [DataRow(4, true)]      //return empty list as there is not team with id 0
-            [DataRow(2, true)]      //return empty list as there is not team with id 0
+            [DataRow(25, true)]      //return empty list as there is not team with id 25
+            [DataRow(2, false)]      //return list of players
             public void GetTestWithParams(int teamId, bool isEmpty)
             {
 

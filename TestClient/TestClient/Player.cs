@@ -18,7 +18,7 @@ namespace FootballManager.Models
         public int FKTeamId { get; set; }
         public override string ToString()
         {
-            return PlayerName;
+            return PlayerName+" " +PlayerSurname;
         }
     }
 

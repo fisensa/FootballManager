@@ -19,7 +19,7 @@ namespace FootballManager.Models
 
     }
 
-    public enum PlayerPosition { RIGHT_BACK, CENTRE_BACK, LEFT_BACK, CENTRE_MIDFIELDER, LEFT_MIDFIELDER, RIGHT_MIDFIELDER }
+    public enum PlayerPosition { BACK, CENTRE, MIDFIELDER, FORWARD, GOALKEEPER }
 
 
 }

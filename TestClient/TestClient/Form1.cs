@@ -34,22 +34,31 @@ namespace TestClient
             listBoxStadiums.Items.Clear();
             using (var client = new WebClient())
             {
-            
-                client.BaseAddress = baseUri;
-                var json = client.DownloadString("/api/footballmanager/getstadiums");
-                var stadiums = JsonConvert.DeserializeObject<List<Stadium>>(json);
 
-                foreach (var stadium in stadiums)
+                try
                 {
-                    comboStadiums.Items.Add(stadium);
-                    listBoxStadiums.Items.Add(stadium);
+                    client.BaseAddress = baseUri;
+                    var json = client.DownloadString("/api/footballmanager/getstadiums");
+                    var stadiums = JsonConvert.DeserializeObject<List<Stadium>>(json);
+
+                    foreach (var stadium in stadiums)
+                    {
+                        comboStadiums.Items.Add(stadium);
+                        listBoxStadiums.Items.Add(stadium);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Failed to retreive data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
 
-            foreach (var playerPos in Enum.GetValues(typeof(PlayerPosition))){
+            foreach (var playerPos in Enum.GetValues(typeof(PlayerPosition)))
+            {
                 comboBoxPlayerPosition.Items.Add(playerPos);
             }
-            
+
         }
 
         private void DownloadTeams()
@@ -59,16 +68,23 @@ namespace TestClient
             comboBoxPlayerTeam.Items.Clear();
             using (var client = new WebClient())
             {
-
-                client.BaseAddress = baseUri;
-                var json = client.DownloadString("/api/footballmanager/getteams");
-                var teams = JsonConvert.DeserializeObject<List<Team>>(json);
-
-                foreach (var team in teams)
+                try
                 {
-                    comboBox1.Items.Add(team);
-                    comboTransferTeam.Items.Add(team);
-                    comboBoxPlayerTeam.Items.Add(team);
+                    client.BaseAddress = baseUri;
+                    var json = client.DownloadString("/api/footballmanager/getteams");
+                    var teams = JsonConvert.DeserializeObject<List<Team>>(json);
+
+                    foreach (var team in teams)
+                    {
+                        comboBox1.Items.Add(team);
+                        comboTransferTeam.Items.Add(team);
+                        comboBoxPlayerTeam.Items.Add(team);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Failed to retreive data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
         }
@@ -89,13 +105,14 @@ namespace TestClient
                         listBox1.Items.Add(player);
                     }
                 }
-                catch(Exception e) {
+                catch (Exception e)
+                {
                     MessageBox.Show(e.Message, "Failed to retreive data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
+
                 }
             }
         }
-        
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             var player = ((PlayerTeam)((ListBox)sender).SelectedItem);
@@ -121,10 +138,6 @@ namespace TestClient
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonCreateTeam_Click(object sender, EventArgs e)
         {
@@ -163,7 +176,7 @@ namespace TestClient
                 values.Add("PlayerNumber", Int32.Parse(textBoxNumber.Text));
                 values.Add("PlayerPosition", playerPosition);
                 values.Add("PlayerBirthDate", textBoxBirthDate.Text);
-                
+
 
                 var valString = JsonConvert.SerializeObject(values);
                 client.Headers[HttpRequestHeader.ContentType] = "application/json;";
@@ -172,7 +185,7 @@ namespace TestClient
 
             }
             DownloadAllPlayers();
-            
+
         }
 
         private void buttonTransferPlayer_Click(object sender, EventArgs e)
@@ -187,18 +200,18 @@ namespace TestClient
                 var values = new Dictionary<string, object>();
                 values.Add("playerId", playerId);
                 values.Add("teamId", teamId);
-                
-             
-                var json = client.UploadString("/api/footballmanager/moveplayertoteam/"+playerId+"/"+teamId, "POST");
-                bool result  = (bool)JsonConvert.DeserializeObject(json);
+
+
+                var json = client.UploadString("/api/footballmanager/moveplayertoteam/" + playerId + "/" + teamId, "POST");
+                bool result = (bool)JsonConvert.DeserializeObject(json);
                 if (!result) MessageBox.Show("Transer failed", "", MessageBoxButtons.OK);
 
             }
             DownloadAllPlayers();
-            
+
         }
 
-      
+
 
         private void buttonCreateStadium_Click(object sender, EventArgs e)
         {
@@ -217,7 +230,7 @@ namespace TestClient
                 client.Headers[HttpRequestHeader.ContentType] = "application/json;";
                 var json = client.UploadString("/api/footballmanager/createstadium", "POST", valString);
                 var result = JsonConvert.DeserializeObject<Stadium>(json);
-               
+
 
             }
             DownloadStadiums();

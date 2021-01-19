@@ -30,9 +30,9 @@ namespace FootballManager.Models
             Stadiums.Add(new Stadium { StadiumId = 2, StadiumName = "Manchester City Stadium", StadiumCapacity = 55017 });
             Teams.Add(new Team { TeamId = 1, TeamLocation = "Soweto", TeamName = "Orlando Pirates", FKStadiumId = 1 });
             Teams.Add(new Team { TeamId = 2, TeamLocation = "Manchester", TeamName = "Manchester City", FKStadiumId = 2 });
-            Players.Add(new Player { PlayerId = 1, PlayerName = "Thabiso", PlayerSurname = "Monyane", PlayerNumber = 2, PlayerPosition = PlayerPosition.RIGHT_BACK, FKTeamId = 1, PlayerBirthDate = "2000/04/30" });
-            Players.Add(new Player { PlayerId = 2, PlayerName = "Test1", PlayerSurname = "Monyane", PlayerNumber = 32, PlayerPosition = PlayerPosition.LEFT_BACK, FKTeamId = 1, PlayerBirthDate = "2000/05/28" });
-            Players.Add(new Player { PlayerId = 3, PlayerName = "Ruben", PlayerSurname = "Dias", PlayerNumber = 3, PlayerPosition = PlayerPosition.CENTRE_BACK, FKTeamId = 2, PlayerBirthDate = "1997/05/14" });
+            Players.Add(new Player { PlayerId = 1, PlayerName = "Thabiso", PlayerSurname = "Monyane", PlayerNumber = 2, PlayerPosition = PlayerPosition.GOALKEEPER, FKTeamId = 1, PlayerBirthDate = "2000/04/30" });
+            Players.Add(new Player { PlayerId = 2, PlayerName = "Joris", PlayerSurname = "Delle", PlayerNumber = 1, PlayerPosition = PlayerPosition.BACK, FKTeamId = 1, PlayerBirthDate = "1990/03/29" });
+            Players.Add(new Player { PlayerId = 3, PlayerName = "Ruben", PlayerSurname = "Dias", PlayerNumber = 3, PlayerPosition = PlayerPosition.CENTRE, FKTeamId = 2, PlayerBirthDate = "1997/05/14" });
 
         }
 
